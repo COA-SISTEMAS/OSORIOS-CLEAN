@@ -223,7 +223,7 @@ const F=Object.fromEntries(Object.entries(FACTORES).map(([k,v])=>[k,[v,D[k]||'Se
 const A=[['Lavanda Serena','Floral y relajante','#76539d'],['Menta Refrescante','Fresco y revitalizante','#287d57'],['Lima Vibrante','Cítrico y energizante','#628d22'],['Paraíso Azul','Brisa fresca y acuática','#287eae'],['Frutos Secos Cálidos','Dulce y acogedor','#94633d'],['Pino Natural','Verde y limpio','#47784a']];
 const $=id=>document.getElementById(id),L=n=>'L '+Number(n).toLocaleString('es-HN');
 const R=n=>Math.round(n/AJUSTES.redondeo)*AJUSTES.redondeo;
-const price=(p,t,a)=>Math.max(AJUSTES.precioMinimo,R(PRECIOS[t][a]*F[p][0]));
+const price=(p,t,a)=>Math.max(AJUSTES.precioMinimo,R(TARIFAS[p]?.[t]?.[a]??0));
 const sel=n=>document.querySelector(`input[name=${n}]:checked`)?.value||'';
 function opts(el,name,items){el.innerHTML=items.map(([v,s,c],i)=>`<div class="opt"><input type="radio" name="${name}" id="${name}${i}" value="${v}"><label for="${name}${i}" ${c?`style="--c:${c}"`:''}><b>${v}</b><small>${s}</small></label></div>`).join('')}
 opts($('prop'),'prop',Object.entries(F).map(([k,v])=>[k,v[1]]));
