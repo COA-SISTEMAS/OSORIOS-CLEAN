@@ -10,10 +10,27 @@
 <title>OSORIOS CLEAN | Limpieza profesional en Juticalpa</title>
 <script>
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-window.addEventListener('pageshow', () => {
-  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
-  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-});
+(function () {
+  function goToTop() {
+    if (location.hash) {
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    if (document.body) document.body.scrollTop = 0;
+  }
+  window.addEventListener('pageshow', function () {
+    goToTop();
+    requestAnimationFrame(function () {
+      goToTop();
+      requestAnimationFrame(goToTop);
+    });
+    setTimeout(goToTop, 120);
+    setTimeout(goToTop, 400);
+  });
+  window.addEventListener('load', goToTop);
+  document.addEventListener('DOMContentLoaded', goToTop);
+})();
 </script>
 <link rel="icon" href="./osorios%20clean.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
