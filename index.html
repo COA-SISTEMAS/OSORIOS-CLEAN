@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f4fbff"><title>OSORIOS CLEAN | Cotiza tu limpieza</title><link rel="icon" href="./osorios%20clean.png">
+<meta name="theme-color" content="#f4fbff"><title>OSORIOS CLEAN | Cotiza tu limpieza</title><link rel="icon" href="./osorios%20clean.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--brand:#123c35;--brand2:#1e5a4a;--accent:#c9a66b;--ink:#1d3029;--muted:#728078;--line:#e0e8e2;--soft:#eef4ef;--paper:#fff;--bg:#f5f7f5;--shadow:0 16px 45px #102f2410}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
@@ -137,6 +137,84 @@ input:focus,select:focus,textarea:focus{border-color:#55a8d0;box-shadow:0 0 0 3p
  .choices{grid-template-columns:1fr}
  .service-grid{grid-template-columns:1fr}
  .service-card:last-child{grid-column:auto}
+}
+
+
+/* Jerarquía tipográfica: Manrope para títulos y DM Sans para lectura */
+:root{--font-display:"Manrope",sans-serif;--font-body:"DM Sans",sans-serif}
+html{font-size:16px}
+body{font-family:var(--font-body);font-size:16px;line-height:1.65;letter-spacing:.005em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3,.step h2,.total,.btn,.cta-button,.logo-shell{font-family:var(--font-display)}
+.hero h1{font-size:clamp(2.8rem,5.6vw,4.35rem);line-height:1.04;letter-spacing:-.055em;font-weight:800;max-width:790px;margin:20px 0 18px}
+.hero-copy>p{font-size:1.08rem;line-height:1.75;max-width:590px;font-weight:400}
+.eyebrow,.eyebrow-dark,.eyebrow-light,.mini-label{font-family:var(--font-display);font-size:.7rem;line-height:1.4;letter-spacing:.16em;font-weight:800}
+.trust{font-size:.82rem;font-weight:600}
+.site-nav a{font-family:var(--font-display);font-size:.8rem;font-weight:700;letter-spacing:.01em}
+.intro-strip strong{font-family:var(--font-display);font-size:1.2rem;line-height:1.45;font-weight:750;letter-spacing:-.025em}
+.section-heading{margin-bottom:30px}
+.section-heading h2,.about-copy h2{font-family:var(--font-display);font-size:clamp(2rem,3.8vw,3rem);line-height:1.12;letter-spacing:-.055em;font-weight:800}
+.section-heading>p,.about-copy>p{font-size:.96rem;line-height:1.75}
+.service-copy h3{font-size:1.12rem;line-height:1.3;letter-spacing:-.025em;font-weight:800}
+.service-copy p{font-size:.88rem;line-height:1.65}
+.service-copy a,.text-link{font-family:var(--font-display);font-size:.8rem;font-weight:800;letter-spacing:.01em}
+.about-copy li b{font-family:var(--font-display);font-size:.9rem;font-weight:800;letter-spacing:-.01em}
+.about-copy li small{font-size:.82rem;line-height:1.55}
+.visual-big{font-family:var(--font-display);font-size:clamp(2.45rem,4.2vw,3.35rem);font-weight:800;line-height:.99;letter-spacing:-.065em}
+.visual-caption{font-size:.82rem;line-height:1.5}
+.floating-chip{font-family:var(--font-display);font-size:.8rem;font-weight:750}
+.process-item h3{font-family:var(--font-display);font-size:1rem;line-height:1.35;font-weight:800;letter-spacing:-.02em}
+.process-item p{font-size:.86rem;line-height:1.65}
+.process-number{font-family:var(--font-display);font-weight:800}
+.cta-band h2{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.45rem);line-height:1.12;letter-spacing:-.05em;font-weight:800}
+.cta-band p{font-size:.9rem;line-height:1.6}
+.cta-button,.btn{font-size:.86rem;letter-spacing:.005em;font-weight:800}
+.step h2{font-size:1.08rem;line-height:1.35;letter-spacing:-.025em;font-weight:800}
+.num{font-family:var(--font-display);font-size:.9rem}
+.muted,.notice{font-size:.84rem;line-height:1.6}
+.choice b{font-family:var(--font-display);font-size:.9rem;font-weight:800;line-height:1.35}
+.choice small{font-size:.78rem;line-height:1.45}
+.field>label,.space{font-size:.84rem;line-height:1.45;font-weight:650}
+input,select,textarea{font-family:var(--font-body);font-size:.95rem;line-height:1.4}
+.summary .total{font-size:clamp(1.8rem,3vw,2.2rem);line-height:1.15;font-weight:800;letter-spacing:-.045em}
+.footer{font-size:.82rem;line-height:1.8}
+.footer strong{font-family:var(--font-display);font-size:.88rem;font-weight:800;letter-spacing:.08em}
+@media(max-width:760px){
+ body{font-size:15px;line-height:1.6}
+ .hero h1{font-size:clamp(2.35rem,9vw,3.1rem);line-height:1.06;letter-spacing:-.05em;margin:16px 0 14px}
+ .hero-copy>p{font-size:.94rem;line-height:1.65}
+ .eyebrow,.eyebrow-dark,.eyebrow-light,.mini-label{font-size:.64rem;letter-spacing:.14em}
+ .trust{font-size:.73rem;line-height:1.4}
+ .site-nav a{font-size:.69rem}
+ .intro-strip strong{font-size:1rem;line-height:1.45}
+ .section-heading{margin-bottom:22px}
+ .section-heading h2,.about-copy h2{font-size:clamp(1.85rem,7vw,2.25rem);line-height:1.12}
+ .section-heading>p,.about-copy>p{font-size:.88rem;line-height:1.65}
+ .service-copy h3{font-size:1rem}
+ .service-copy p{font-size:.8rem;line-height:1.55}
+ .service-copy a,.text-link{font-size:.75rem}
+ .about-copy li b{font-size:.86rem}
+ .about-copy li small{font-size:.78rem}
+ .visual-big{font-size:2.35rem}
+ .visual-caption{font-size:.76rem}
+ .floating-chip{font-size:.72rem}
+ .process-item h3{font-size:.94rem}
+ .process-item p{font-size:.8rem}
+ .cta-band h2{font-size:1.8rem}
+ .cta-band p{font-size:.84rem}
+ .cta-button,.btn{font-size:.84rem}
+ .step h2{font-size:.96rem;line-height:1.35}
+ .muted,.notice{font-size:.8rem}
+ .choice b{font-size:.85rem}
+ .choice small{font-size:.74rem}
+ .field>label,.space{font-size:.8rem}
+ input,select,textarea{font-size:16px}
+ .footer{font-size:.76rem}
+}
+@media(max-width:380px){
+ .hero h1{font-size:2.2rem}
+ .section-heading h2,.about-copy h2{font-size:1.75rem}
+ .intro-strip strong{font-size:.94rem}
+ .choice b{font-size:.82rem}
 }
 
 </style></head>
