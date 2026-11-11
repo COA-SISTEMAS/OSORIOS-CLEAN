@@ -373,7 +373,7 @@ const TARIFAS={
       "Garaje": 220,
       "Ventanas": 220,
       "Recepción": 230,
-      "Escritorios": 220,
+      "Escritorios": 100,
       "Sala de espera": 220,
       "Área de atención": 240
     },
@@ -387,7 +387,7 @@ const TARIFAS={
       "Garaje": 280,
       "Ventanas": 250,
       "Recepción": 290,
-      "Escritorios": 250,
+      "Escritorios": 150,
       "Sala de espera": 280,
       "Área de atención": 310
     },
@@ -401,7 +401,7 @@ const TARIFAS={
       "Garaje": 390,
       "Ventanas": 310,
       "Recepción": 400,
-      "Escritorios": 310,
+      "Escritorios": 250,
       "Sala de espera": 390,
       "Área de atención": 430
     }
