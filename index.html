@@ -126,6 +126,20 @@ footer strong{font-family:var(--h);color:var(--blue);letter-spacing:.06em}
     -webkit-appearance:auto;appearance:auto
   }
 }
+
+/* Corrección puntual del ancho del selector de fecha en Safari/iPhone */
+@media(max-width:560px){
+  .f:has(#date){width:100%;min-width:0;max-width:100%;overflow:hidden}
+  #date{
+    display:block;width:100%;min-width:0;max-width:100%;
+    box-sizing:border-box;-webkit-appearance:none;appearance:none;
+    padding:10px 38px 10px 12px;overflow:hidden
+  }
+  #date::-webkit-date-and-time-value{width:100%;min-width:0;text-align:left}
+  #date::-webkit-calendar-picker-indicator{
+    position:absolute;right:11px;margin:0;padding:0
+  }
+}
 </style>
 </head>
 <body>
