@@ -106,17 +106,13 @@ summary{font:800 1rem var(--h);cursor:pointer;list-style:none;display:flex;justi
 summary:after{content:"+";color:var(--blue);font-size:1.3rem;line-height:1}
 details[open] summary:after{content:"–"}
 details p{margin-top:8px;color:var(--muted);font-size:.93rem}
-.band{background:linear-gradient(110deg,#238fc3,#68bd3e);color:#fff;border-radius:20px;padding:36px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.band h2{margin:0 0 4px;font-size:clamp(1.5rem,3vw,2rem)}.band p{color:#f0faff}
 footer{border-top:1px solid var(--line);padding:32px 0 calc(32px + env(safe-area-inset-bottom));text-align:center;font-size:.85rem;color:var(--muted)}
 footer strong{font-family:var(--h);color:var(--blue);letter-spacing:.06em}
-.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:25;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 8px 22px #0003}
-.wa svg{width:30px;height:30px;fill:#fff}
-@media(max-width:900px){.q{grid-template-columns:1fr}.sum{position:static;order:-1;display:none}.grid3,.steps{grid-template-columns:1fr}.opts{grid-template-columns:repeat(2,minmax(0,1fr))}nav{display:none}
- .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:24;background:#fff;border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));align-items:center;justify-content:space-between;gap:12px;box-shadow:0 -6px 20px #0001;transform:translateY(110%);transition:transform .25s}
- .mbar.on{transform:none}.mbar b{font:800 1.4rem var(--h);color:var(--blue);display:block;line-height:1.1}.mbar small{color:var(--muted);font-size:.75rem}.mbar .btn{padding:12px 18px}
- .wa{bottom:calc(86px + env(safe-area-inset-bottom))}}
-@media(max-width:560px){section{padding:44px 0}.hero{padding:44px 0 52px}.fields{grid-template-columns:1fr}.spaces{grid-template-columns:1fr}.opts{gap:8px}fieldset{padding:16px 14px}.band{padding:26px 20px}.hero .btn,.band .btn{width:100%}.brand span{display:none}}
+@media(max-width:900px){.q{grid-template-columns:1fr}.sum{position:static}.grid3,.steps{grid-template-columns:1fr}.opts{grid-template-columns:repeat(2,minmax(0,1fr))}nav{display:none}
+ .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:24;background:#fff;border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));align-items:center;justify-content:space-between;gap:12px;box-shadow:0 -6px 20px #0001;}body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+ .mbar b{font:800 1.4rem var(--h);color:var(--blue);display:block;line-height:1.1}.mbar small{color:var(--muted);font-size:.75rem}.mbar .btn{padding:12px 18px}
+}
+@media(max-width:560px){section{padding:44px 0}.hero{padding:44px 0 52px}.fields{grid-template-columns:1fr}.spaces{grid-template-columns:1fr}.opts{gap:8px}fieldset{padding:16px 14px}.hero .btn{width:100%}.brand span{display:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -164,7 +160,7 @@ footer strong{font-family:var(--h);color:var(--blue);letter-spacing:.06em}
 <fieldset><legend><i>2</i>Tipo de limpieza</legend><div class="opts" id="clean"></div></fieldset>
 <fieldset><legend><i>3</i>Espacios a incluir</legend><p class="hint">Marca las áreas y ajusta la cantidad (ej. 2 baños).</p><div class="spaces" id="spaces"></div>
 <div class="f" style="margin-top:14px;max-width:260px"><label for="floors">Plantas del inmueble</label><input id="floors" type="number" min="1" max="10" value="1" inputmode="numeric"></div>
-<p class="hint">Desde la segunda planta se suma 10 % por cada planta adicional.</p></fieldset>
+<p class="hint">Desde la segunda planta se suma <span id="pp">10</span> % por cada planta adicional.</p></fieldset>
 <fieldset><legend><i>4</i>Aroma final</legend><p class="hint">Sin costo adicional.</p><div class="opts aromas" id="aroma"></div></fieldset>
 <fieldset><legend><i>5</i>Tus datos</legend><div class="fields">
 <div class="f"><label for="name">Nombre completo</label><input id="name" type="text" autocomplete="name" required></div>
@@ -188,23 +184,40 @@ footer strong{font-family:var(--h);color:var(--blue);letter-spacing:.06em}
 <details><summary>¿Dónde atienden?</summary><p>En Juticalpa, Olancho y zonas aledañas.</p></details>
 </div></section>
 
-<section><div class="w"><div class="band"><div><h2>¿Prefieres hablar con nosotros?</h2><p>Escríbenos y te ayudamos a elegir.</p></div><a class="btn light" href="https://wa.me/50496775363" target="_blank" rel="noopener">WhatsApp +504 9677-5363</a></div></div></section>
 </main>
 
-<footer><div class="w"><strong>OSORIOS CLEAN</strong> · Servicio profesional de limpieza<br>Juticalpa, Olancho y zonas aledañas · <a href="https://wa.me/50496775363" target="_blank" rel="noopener">+504 9677-5363</a></div></footer>
+<footer><div class="w"><strong>OSORIOS CLEAN</strong> · Servicio profesional de limpieza<br>Juticalpa, Olancho y zonas aledañas · +504 9677-5363</div></footer>
 
 <div class="mbar" id="mbar"><div><b id="mtotal">L —</b><small>Total estimado</small></div><a class="btn" href="#datos-go" id="mgo">Continuar</a></div>
-<a class="wa" href="https://wa.me/50496775363" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.200 2.200 1.300.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.8-.1 1.5Z"/></svg></a>
 
+<!-- ============================================================
+     AJUSTES DE PRECIOS — edita SOLO este bloque para cambiar tarifas.
+     Todos los valores están en lempiras (L). No toques nada más.
+     ============================================================ -->
 <script>
-const P={'Exprés':{Sala:200,Cocina:220,Habitaciones:200,'Baños':210,Comedor:200,Patio:200,Garaje:200,Ventanas:200,'Recepción':210,Escritorios:200,'Sala de espera':200,'Área de atención':220},
-'General':{Sala:255,Cocina:285,Habitaciones:245,'Baños':275,Comedor:235,Patio:255,Garaje:255,Ventanas:225,'Recepción':265,Escritorios:225,'Sala de espera':255,'Área de atención':285},
-'Profunda':{Sala:340,Cocina:390,Habitaciones:330,'Baños':370,Comedor:300,Patio:350,Garaje:350,Ventanas:280,'Recepción':360,Escritorios:280,'Sala de espera':350,'Área de atención':390}};
-const F={'Cuarto individual':[.8,'Habitación con o sin baño'],'Apartamento pequeño':[.9,'Espacio compacto'],'Apartamento mediano':[1,'Varias áreas'],'Apartamento grande':[1.2,'Espacios amplios'],'Casa pequeña':[1,'Vivienda compacta'],'Casa mediana':[1.15,'Vivienda familiar'],'Casa grande':[1.35,'Varios ambientes'],'Casa muy grande':[1.6,'Amplia, varias áreas'],'Oficina':[1.1,'Área administrativa'],'Consultorio':[1.1,'Área profesional']};
+/* 1) PRECIO BASE POR ÁREA (para un inmueble con factor 1.00, ej. Casa pequeña) */
+const PRECIOS={
+ 'Exprés':  {Sala:200,Cocina:220,Habitaciones:200,'Baños':210,Comedor:200,Patio:200,Garaje:200,Ventanas:200,'Recepción':210,Escritorios:200,'Sala de espera':200,'Área de atención':220},
+ 'General': {Sala:255,Cocina:285,Habitaciones:245,'Baños':275,Comedor:235,Patio:255,Garaje:255,Ventanas:225,'Recepción':265,Escritorios:225,'Sala de espera':255,'Área de atención':285},
+ 'Profunda':{Sala:340,Cocina:390,Habitaciones:330,'Baños':370,Comedor:300,Patio:350,Garaje:350,Ventanas:280,'Recepción':360,Escritorios:280,'Sala de espera':350,'Área de atención':390}
+};
+/* 2) FACTOR POR TIPO DE INMUEBLE (1 = precio base, 1.2 = 20 % más, 0.8 = 20 % menos) */
+const FACTORES={'Cuarto individual':0.8,'Apartamento pequeño':0.9,'Apartamento mediano':1,'Apartamento grande':1.2,'Casa pequeña':1,'Casa mediana':1.15,'Casa grande':1.35,'Casa muy grande':1.6,'Oficina':1.1,'Consultorio':1.1};
+/* 3) OTROS AJUSTES */
+const AJUSTES={
+ recargoPorPlanta:0.10, // 0.10 = 10 % por cada planta adicional
+ precioMinimo:100,      // ningún concepto cobra menos de este valor
+ redondeo:10            // redondea los precios a múltiplos de L 10 (usa 1 para no redondear)
+};
+</script>
+<script>
+const D={'Cuarto individual':'Habitación con o sin baño','Apartamento pequeño':'Espacio compacto','Apartamento mediano':'Varias áreas','Apartamento grande':'Espacios amplios','Casa pequeña':'Vivienda compacta','Casa mediana':'Vivienda familiar','Casa grande':'Varios ambientes','Casa muy grande':'Amplia, varias áreas','Oficina':'Área administrativa','Consultorio':'Área profesional'};
+const F=Object.fromEntries(Object.entries(FACTORES).map(([k,v])=>[k,[v,D[k]]]));
 const C={'Exprés':'Mantenimiento ligero','General':'Limpieza habitual','Profunda':'Atención detallada'};
 const A=[['Lavanda Serena','Floral y relajante','#76539d'],['Menta Refrescante','Fresco y revitalizante','#287d57'],['Lima Vibrante','Cítrico y energizante','#628d22'],['Paraíso Azul','Brisa fresca y acuática','#287eae'],['Frutos Secos Cálidos','Dulce y acogedor','#94633d'],['Pino Natural','Verde y limpio','#47784a']];
 const $=id=>document.getElementById(id),L=n=>'L '+Number(n).toLocaleString('es-HN');
-const price=(p,t,a)=>Math.max(100,Math.round(P[t][a]*F[p][0]/10)*10);
+const R=n=>Math.round(n/AJUSTES.redondeo)*AJUSTES.redondeo;
+const price=(p,t,a)=>Math.max(AJUSTES.precioMinimo,R(PRECIOS[t][a]*F[p][0]));
 const sel=n=>document.querySelector(`input[name=${n}]:checked`)?.value||'';
 function opts(el,name,items){el.innerHTML=items.map(([v,s,c],i)=>`<div class="opt"><input type="radio" name="${name}" id="${name}${i}" value="${v}"><label for="${name}${i}" ${c?`style="--c:${c}"`:''}><b>${v}</b><small>${s}</small></label></div>`).join('')}
 opts($('prop'),'prop',Object.entries(F).map(([k,v])=>[k,v[1]]));
@@ -216,7 +229,7 @@ function calc(){
  const p=sel('prop'),t=sel('clean'),r=rows(),fl=Math.max(1,+$('floors').value||1);
  document.querySelectorAll('.sp').forEach(el=>{const c=el.querySelector('[type=checkbox]');el.querySelector('.qty').disabled=!c.checked;el.querySelector('em').textContent=p&&t?L(price(p,t,el.dataset.a))+' c/u':''});
  if(!p||!t||!r.length){$('total').textContent='L —';$('mtotal').textContent='L —';$('lines').innerHTML='<li><span>Selecciona inmueble, limpieza y áreas.</span></li>';$('mbar').classList.remove('on');return null}
- const lines=r.map(x=>({...x,s:price(p,t,x.a)*x.q})),base=lines.reduce((s,x)=>s+x.s,0),extra=Math.round(base*(fl-1)*.1/10)*10,tot=base+extra;
+ const lines=r.map(x=>({...x,s:price(p,t,x.a)*x.q})),base=lines.reduce((s,x)=>s+x.s,0),extra=R(base*(fl-1)*AJUSTES.recargoPorPlanta),tot=base+extra;
  $('total').textContent=$('mtotal').textContent=L(tot);
  $('lines').innerHTML=lines.map(x=>`<li><span>${x.a} × ${x.q}</span><b>${L(x.s)}</b></li>`).join('')+(extra?`<li><span>Ajuste ${fl} plantas</span><b>${L(extra)}</b></li>`:'');
  $('mbar').classList.add('on');return{p,t,lines,tot,fl};
@@ -233,6 +246,7 @@ $('f').addEventListener('submit',e=>{e.preventDefault();
  const msg=['*SOLICITUD DE SERVICIO - OSORIOS CLEAN*','Cliente: '+$('name').value.trim(),'Teléfono: '+$('phone').value.trim(),'Inmueble: '+c.p,'Limpieza: '+c.t,'Plantas: '+c.fl,'Espacios: '+c.lines.map(x=>x.a+' x'+x.q).join(', '),'Aroma (sin costo): '+(sel('aroma')||'Sin preferencia'),'Fecha: '+$('date').value,'Horario: '+$('time').value,'Dirección: '+$('address').value.trim(),'Notas: '+($('notes').value.trim()||'—'),'*Total estimado: '+L(c.tot)+'*'].join('\n');
  window.open('https://wa.me/50496775363?text='+encodeURIComponent(msg),'_blank','noopener');
 });
+$('pp').textContent=Math.round(AJUSTES.recargoPorPlanta*100);
 calc();
 </script>
 </body></html>
