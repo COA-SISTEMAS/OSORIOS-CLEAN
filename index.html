@@ -220,7 +220,7 @@ footer strong{font-family:var(--h);color:var(--blue);letter-spacing:.06em}
 <!-- Los precios y opciones editables se administran en precios.js -->
 <script src="./precios.js"></script>
 <script>
-const F=Object.fromEntries(Object.entries(FACTORES).map(([k,v])=>[k,[v,D[k]||'Servicio personalizado']]));
+const F=Object.fromEntries(Object.entries(D).map(([k,v])=>[k,[null,v]]));
 const A=[['Lavanda Serena','Floral y relajante','#76539d'],['Menta Refrescante','Fresco y revitalizante','#287d57'],['Lima Vibrante','Cítrico y energizante','#628d22'],['Paraíso Azul','Brisa fresca y acuática','#287eae'],['Frutos Secos Cálidos','Dulce y acogedor','#94633d'],['Pino Natural','Verde y limpio','#47784a']];
 const $=id=>document.getElementById(id),L=n=>'L '+Number(n).toLocaleString('es-HN');
 const R=n=>Math.round(n/AJUSTES.redondeo)*AJUSTES.redondeo;
@@ -230,7 +230,7 @@ function opts(el,name,items){el.innerHTML=items.map(([v,s,c],i)=>`<div class="op
 opts($('prop'),'prop',Object.entries(F).map(([k,v])=>[k,v[1]]));
 opts($('clean'),'clean',Object.entries(C));
 opts($('aroma'),'aroma',A);
-$('spaces').innerHTML=Object.keys(PRECIOS['General']).map(a=>`<div class="sp" data-a="${a}"><label><input type="checkbox">${a}<em></em></label><input class="qty" type="number" min="1" max="50" value="1" disabled aria-label="Cantidad de ${a}" inputmode="numeric"></div>`).join('');
+$('spaces').innerHTML=Object.keys(TARIFAS[Object.keys(TARIFAS)[0]]['General']).map(a=>`<div class="sp" data-a="${a}"><label><input type="checkbox">${a}<em></em></label><input class="qty" type="number" min="1" max="50" value="1" disabled aria-label="Cantidad de ${a}" inputmode="numeric"></div>`).join('');
 const rows=()=>[...document.querySelectorAll('.sp')].filter(r=>r.querySelector('[type=checkbox]').checked).map(r=>({a:r.dataset.a,q:Math.max(1,Math.min(50,+r.querySelector('.qty').value||1))}));
 function calc(){
  const p=sel('prop'),t=sel('clean'),r=rows(),fl=Math.max(1,+$('floors').value||1);
