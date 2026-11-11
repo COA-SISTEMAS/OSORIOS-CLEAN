@@ -298,16 +298,16 @@ input,select,textarea{font-family:var(--font-body);font-size:.95rem;line-height:
 </form></section>
 </main><footer class="footer"><strong>OSORIOS CLEAN</strong> · Servicio profesional de limpieza<br>Juticalpa, Olancho y zonas aledañas · <a href="https://wa.me/50496775363" target="_blank" rel="noopener">WhatsApp +504 9677-5363</a></footer>
 <script>
-/* TABLA DE TARIFAS: pendiente de completar con los precios aprobados por OSORIOS CLEAN.
-   Estructura: tarifas[tipoInmueble][tipoLimpieza][espacio] = precio en lempiras.
-   No se muestran importes inventados al cliente. */
+/* TABLA DE TARIFAS DE OSORIOS CLEAN.
+   Ningún concepto individual baja de L 100, incluso al aplicar factores por inmueble.
+   Estructura: tarifas[tipoInmueble][tipoLimpieza][espacio] = precio en lempiras. */
 const preciosBase={
- 'Exprés':{base:350,Sala:80,Cocina:100,Habitaciones:70,'Baños':90,Comedor:60,Patio:80,Garaje:80,Ventanas:50,Recepción:90,Escritorios:50,'Sala de espera':80,'Área de atención':100},
- 'General':{base:450,Sala:120,Cocina:150,Habitaciones:110,'Baños':140,Comedor:90,Patio:120,Garaje:120,Ventanas:80,Recepción:130,Escritorios:80,'Sala de espera':120,'Área de atención':150},
- 'Profunda':{base:600,Sala:170,Cocina:220,Habitaciones:160,'Baños':200,Comedor:130,Patio:180,Garaje:180,Ventanas:120,Recepción:190,Escritorios:120,'Sala de espera':180,'Área de atención':220}
+ 'Exprés':{base:400,Sala:100,Cocina:120,Habitaciones:100,'Baños':110,Comedor:100,Patio:100,Garaje:100,Ventanas:100,Recepción:110,Escritorios:100,'Sala de espera':100,'Área de atención':120},
+ 'General':{base:500,Sala:130,Cocina:160,Habitaciones:120,'Baños':150,Comedor:110,Patio:130,Garaje:130,Ventanas:100,Recepción:140,Escritorios:100,'Sala de espera':130,'Área de atención':160},
+ 'Profunda':{base:650,Sala:180,Cocina:230,Habitaciones:170,'Baños':210,Comedor:140,Patio:190,Garaje:190,Ventanas:120,Recepción:200,Escritorios:120,'Sala de espera':190,'Área de atención':230}
 };
 const factoresInmueble={'Cuarto individual':0.8,'Apartamento pequeño':0.9,'Apartamento mediano':1,'Apartamento grande':1.2,'Casa pequeña':1,'Casa mediana':1.15,'Casa grande':1.35,'Casa muy grande':1.6,'Oficina':1.1,'Consultorio':1.1};
-const tarifas=Object.fromEntries(Object.entries(factoresInmueble).map(([inmueble,factor])=>[inmueble,Object.fromEntries(Object.entries(preciosBase).map(([tipo,items])=>[tipo,Object.fromEntries(Object.entries(items).map(([area,precio])=>[area,Math.round(precio*factor/10)*10]))]))]));
+const tarifas=Object.fromEntries(Object.entries(factoresInmueble).map(([inmueble,factor])=>[inmueble,Object.fromEntries(Object.entries(preciosBase).map(([tipo,items])=>[tipo,Object.fromEntries(Object.entries(items).map(([area,precio])=>[area,Math.max(100,Math.round(precio*factor/10)*10)]))]))]));
 const form=document.getElementById('quoteForm');
 function selected(name){return document.querySelector('input[name="'+name+'"]:checked')?.value||''}
 function chosenSpaces(){return [...document.querySelectorAll('#spaces input:checked')].map(x=>x.value)}
