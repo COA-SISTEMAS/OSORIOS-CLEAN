@@ -277,7 +277,7 @@ $('f').addEventListener('submit',e=>{e.preventDefault();
  const f=['name','phone','address','date','time'].find(k=>!$(k).value.trim());
  if(f){err.textContent='Completa tus datos de contacto, fecha y horario.';$(f).focus();return}
  if($('phone').value.replace(/\D/g,'').length<8){err.textContent='Ingresa un teléfono válido (mínimo 8 dígitos).';$('phone').focus();return}
- const msg=['*SOLICITUD DE SERVICIO - OSORIOS CLEAN*','Cliente: '+$('name').value.trim(),'Teléfono: '+$('phone').value.trim(),'Inmueble: '+c.p,'Limpieza: '+c.t,'Plantas: '+c.fl,'Espacios: '+c.lines.map(x=>x.a+' x'+x.q).join(', '),'Aroma (sin costo): '+(sel('aroma')||'Sin preferencia'),'Fecha: '+$('date').value,'Horario: '+$('time').value,'Dirección: '+$('address').value.trim(),'Notas: '+($('notes').value.trim()||'—'),'*Total estimado: '+L(c.tot)+'*'].join('\n');
+ const msg=['Hola, soy '+$('name').value.trim()+'.','Les comparto mi solicitud de servicio para consultar su disponibilidad y confirmar si pueden atenderme en la fecha indicada. ¡Muchas gracias!','','*COTIZACIÓN - OSORIOS CLEAN*','Cliente: '+$('name').value.trim(),'Teléfono: '+$('phone').value.trim(),'Inmueble: '+c.p,'Limpieza: '+c.t,'Plantas: '+c.fl,'Espacios: '+c.lines.map(x=>x.a+' x'+x.q).join(', '),'Aroma (sin costo): '+(sel('aroma')||'Sin preferencia'),'Fecha solicitada: '+$('date').value,'Horario preferido: '+$('time').value,'Dirección: '+$('address').value.trim(),'Notas: '+($('notes').value.trim()||'—'),'*Total estimado: '+L(c.tot)+'*'].join('\n');
  window.open('https://wa.me/50496775363?text='+encodeURIComponent(msg),'_blank','noopener');
 });
 $('pp').textContent=Math.round(AJUSTES.recargoPorPlanta*100);
