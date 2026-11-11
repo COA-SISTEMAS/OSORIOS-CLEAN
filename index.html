@@ -234,10 +234,13 @@ input,select,textarea{font-family:var(--font-body);font-size:.95rem;line-height:
 
 
 /* Tarifas visibles por área en el configurador */
-.space{position:relative;gap:8px;padding-right:9px}
+.space-item{display:grid;grid-template-columns:minmax(0,1fr) 62px;gap:6px;align-items:center;min-width:0}
+.space{position:relative;gap:8px;padding:11px 9px;min-width:0;min-height:44px}
 .space:after{content:attr(data-price);margin-left:auto;color:#268bc5;font-size:11px;font-weight:800;white-space:nowrap}
 .space:has(input:checked):after{color:#39852e}
-@media(max-width:760px){.space:after{font-size:10px}.space{gap:6px}}
+.space-qty{width:62px;min-width:0;padding:8px 5px;text-align:center;font-size:13px}
+.space-qty:disabled{opacity:.35;background:#f4f7f8}
+@media(max-width:760px){.space:after{font-size:10px}.space{gap:6px}.space-item{grid-template-columns:minmax(0,1fr) 54px}.space-qty{width:54px}}
 
 </style></head>
 <body>
@@ -277,8 +280,20 @@ input,select,textarea{font-family:var(--font-body);font-size:.95rem;line-height:
 </div></section>
 <section class="card"><div class="step"><span class="num">3</span><h2>¿Qué espacios deseas incluir?</h2></div><p class="muted">Selecciona todas las áreas que necesitas. Las opciones se adaptan al tipo de inmueble.</p>
 <div class="spaces" id="spaces">
-<label class="space"><input type="checkbox" value="Sala">Sala</label><label class="space"><input type="checkbox" value="Cocina">Cocina</label><label class="space"><input type="checkbox" value="Habitaciones">Habitaciones</label><label class="space"><input type="checkbox" value="Baños">Baños</label><label class="space"><input type="checkbox" value="Comedor">Comedor</label><label class="space"><input type="checkbox" value="Patio">Patio</label><label class="space"><input type="checkbox" value="Garaje">Garaje</label><label class="space"><input type="checkbox" value="Ventanas">Ventanas</label><label class="space"><input type="checkbox" value="Recepción">Recepción</label><label class="space"><input type="checkbox" value="Escritorios">Escritorios</label><label class="space"><input type="checkbox" value="Sala de espera">Sala de espera</label><label class="space"><input type="checkbox" value="Área de atención">Área de atención</label>
+<div class="space-item"><label class="space"><input type="checkbox" value="Sala">Sala</label><input class="space-qty" type="number" min="1" value="1" aria-label="Cantidad de Sala" disabled></div>
+<div class="space-item"><label class="space"><input type="checkbox" value="Cocina">Cocina</label><input class="space-qty" type="number" min="1" value="1" aria-label="Cantidad de Cocina" disabled></div>
+<div class="space-item"><label class="space"><input type="checkbox" value="Habitaciones">Habitaciones</label><input class="space-qty" type="number" min="1" value="1" aria-label="Cantidad de Habitaciones" disabled></div>
+<div class="space-item"><label class="space"><input type="checkbox" value="Baños">Baños</label><input class="space-qty" type="number" min="1" value="1" aria-label="Cantidad de Baños" disabled></div>
+<div class="space-item"><label class="space"><input type="checkbox" value="Comedor">Comedor</label><input class="space-qty" type="number" min="1" value="1" aria-label="Cantidad de Comedor" disabled></div>
+<div class="space-item"><label class="space"><input type="checkbox" value="Patio">Patio</label><input class="space-qty" type="number" min="1" value="1" aria-label="Cantidad de Patio" disabled></div>
+<div class="space-item"><label class="space"><input type="checkbox" value="Garaje">Garaje</label><input class="space-qty" type="number" min="1" value="1" aria-label="Cantidad de Garaje" disabled></div>
+<div class="space-item"><label class="space"><input type="checkbox" value="Ventanas">Ventanas</label><input class="space-qty" type="number" min="1" value="1" aria-label="Cantidad de Ventanas" disabled></div>
+<div class="space-item"><label class="space"><input type="checkbox" value="Recepción">Recepción</label><input class="space-qty" type="number" min="1" value="1" aria-label="Cantidad de Recepción" disabled></div>
+<div class="space-item"><label class="space"><input type="checkbox" value="Escritorios">Escritorios</label><input class="space-qty" type="number" min="1" value="1" aria-label="Cantidad de Escritorios" disabled></div>
+<div class="space-item"><label class="space"><input type="checkbox" value="Sala de espera">Sala de espera</label><input class="space-qty" type="number" min="1" value="1" aria-label="Cantidad de Sala de espera" disabled></div>
+<div class="space-item"><label class="space"><input type="checkbox" value="Área de atención">Área de atención</label><input class="space-qty" type="number" min="1" value="1" aria-label="Cantidad de Área de atención" disabled></div>
 </div>
+<div class="fields" style="margin-top:15px"><div class="field"><label for="floors">Cantidad de plantas del inmueble</label><input id="floors" type="number" min="1" value="1"></div><p class="muted">Desde la segunda planta se aplica un ajuste del 10% por cada planta adicional, por el trabajo extra de acceso y desplazamiento.</p></div>
 <div class="fields" style="margin-top:15px"><div class="field"><label for="bedrooms">Cantidad de habitaciones / espacios de trabajo</label><input id="bedrooms" type="number" min="0" value="1"></div><div class="field"><label for="bathrooms">Cantidad de baños</label><input id="bathrooms" type="number" min="0" value="1"></div></div>
 </section>
 <section class="card" id="aroma"><div class="step"><span class="num">4</span><h2>¿A qué te gustaría que oliera tu espacio al finalizar la limpieza?</h2></div><p class="muted">Elige el aroma que más te guste. Esta preferencia no tiene ningún costo adicional.</p><div class="choices">
@@ -310,38 +325,35 @@ const factoresInmueble={'Cuarto individual':0.8,'Apartamento pequeño':0.9,'Apar
 const tarifas=Object.fromEntries(Object.entries(factoresInmueble).map(([inmueble,factor])=>[inmueble,Object.fromEntries(Object.entries(preciosBase).map(([tipo,items])=>[tipo,Object.fromEntries(Object.entries(items).map(([area,precio])=>[area,Math.max(100,Math.round(precio*factor/10)*10)]))]))]));
 const form=document.getElementById('quoteForm');
 function selected(name){return document.querySelector('input[name="'+name+'"]:checked')?.value||''}
-function chosenSpaces(){return [...document.querySelectorAll('#spaces input:checked')].map(x=>x.value)}
+function chosenSpaces(){return [...document.querySelectorAll('#spaces input[type="checkbox"]:checked')].map(x=>x.value)}
 function money(value){return 'L '+Number(value).toLocaleString('es-HN',{maximumFractionDigits:0})}
+function quantityFor(name){const item=[...document.querySelectorAll('#spaces .space-item')].find(el=>el.querySelector('input[type="checkbox"]').value===name);return Math.max(1,Number(item?.querySelector('.space-qty').value)||1)}
 function updateSpacePrices(){
  const p=selected('property'),t=selected('cleaning'),table=tarifas[p]?.[t];
- document.querySelectorAll('#spaces input').forEach(input=>{
-  const label=input.closest('label');
-  const price=table?.[input.value];
-  label.dataset.price=typeof price==='number'?money(price)+( ['Habitaciones','Baños','Escritorios'].includes(input.value)?' c/u':input.value==='Ventanas'?' / conjunto':' / área'):'';
+ document.querySelectorAll('#spaces .space-item').forEach(item=>{
+  const input=item.querySelector('input[type="checkbox"]'),qty=item.querySelector('.space-qty'),label=item.querySelector('label');
+  const price=table?.[input.value];qty.disabled=!input.checked;
+  label.dataset.price=typeof price==='number'?money(price)+' c/u':'';
  });
 }
 function calculate(){
  const p=selected('property'),t=selected('cleaning'),s=chosenSpaces();
  const totalEl=document.getElementById('total'),summary=document.getElementById('summaryText');
  if(!p||!t){totalEl.textContent='Selecciona inmueble y limpieza';summary.textContent='Elige el tipo de inmueble y la limpieza para ver los precios por área.';return null}
- const table=tarifas[p]?.[t];
- if(!table){totalEl.textContent='Tarifa no disponible';return null}
+ const table=tarifas[p]?.[t];if(!table){totalEl.textContent='Tarifa no disponible';return null}
  let areas=0,missing=[];
- s.forEach(x=>{if(typeof table[x]==='number')areas+=table[x];else missing.push(x)});
- const qtyRoom=Math.max(1,Number(document.getElementById('bedrooms').value)||1);
- const qtyBath=Math.max(1,Number(document.getElementById('bathrooms').value)||1);
- if(s.includes('Habitaciones'))areas+=Math.max(0,qtyRoom-1)*table.Habitaciones;
- if(s.includes('Baños'))areas+=Math.max(0,qtyBath-1)*table.Baños;
- if(s.includes('Escritorios'))areas+=Math.max(0,qtyRoom-1)*table.Escritorios;
- const sum=areas;
+ const detail=s.map(name=>{const qty=quantityFor(name);if(typeof table[name]==='number')areas+=table[name]*qty;else missing.push(name);return name+' x'+qty});
+ const floors=Math.max(1,Number(document.getElementById('floors').value)||1);
+ const floorAdjustment=Math.round(areas*Math.max(0,floors-1)*0.10/10)*10;
+ const sum=areas+floorAdjustment;
  totalEl.textContent=missing.length?'Tarifa incompleta':money(sum);
- summary.textContent='Áreas seleccionadas: '+money(areas)+' · '+s.join(', ');
+ summary.textContent='Espacios: '+money(areas)+(floorAdjustment?' · Ajuste por '+(floors-1)+' planta(s) adicional(es): '+money(floorAdjustment):'')+' · '+detail.join(', ');
  return missing.length?null:sum
 }
 form.addEventListener('change',()=>{updateSpacePrices();calculate()});
 form.addEventListener('input',()=>{updateSpacePrices();calculate()});
 updateSpacePrices();
 form.addEventListener('submit',e=>{e.preventDefault();const p=selected('property'),t=selected('cleaning'),spaces=chosenSpaces();if(!p||!t||!spaces.length){alert('Selecciona el inmueble, tipo de limpieza y al menos un espacio.');return}
-const total=calculate(),aroma=selected('aroma')||'Sin preferencia',data='SOLICITUD DE SERVICIO - OSORIOS CLEAN\nCliente: '+document.getElementById('name').value+'\nTeléfono: '+document.getElementById('phone').value+'\nInmueble: '+p+'\nLimpieza: '+t+'\nEspacios: '+spaces.join(', ')+'\nAroma preferido (sin costo adicional): '+aroma+'\nHabitaciones/áreas: '+document.getElementById('bedrooms').value+'\nBaños: '+document.getElementById('bathrooms').value+'\nFecha solicitada: '+document.getElementById('date').value+'\nHorario: '+document.getElementById('time').value+'\nDirección: '+document.getElementById('address').value+'\nNotas: '+document.getElementById('notes').value+'\nCotización: '+(total===null?'Pendiente de tarifa':'L '+total.toFixed(2));
+const total=calculate(),aroma=selected('aroma')||'Sin preferencia',detalle=spaces.map(x=>x+' x'+quantityFor(x)).join(', '),data='SOLICITUD DE SERVICIO - OSORIOS CLEAN\\nCliente: '+document.getElementById('name').value+'\\nTeléfono: '+document.getElementById('phone').value+'\\nInmueble: '+p+'\\nLimpieza: '+t+'\\nPlantas del inmueble: '+document.getElementById('floors').value+'\\nEspacios y cantidades: '+detalle+'\\nAroma preferido (sin costo adicional): '+aroma+'\\nFecha solicitada: '+document.getElementById('date').value+'\\nHorario: '+document.getElementById('time').value+'\\nDirección: '+document.getElementById('address').value+'\\nNotas: '+document.getElementById('notes').value+'\\nCotización: '+(total===null?'Pendiente de tarifa':'L '+total.toFixed(2))
 window.open('https://wa.me/50496775363?text='+encodeURIComponent(data),'_blank')});
 </script></body></html>
