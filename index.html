@@ -264,6 +264,15 @@ input,select,textarea{font-family:var(--font-body);font-size:.95rem;line-height:
 @media(max-width:900px){.detail-grid{grid-template-columns:1fr 1fr}.detail-card:last-child{grid-column:1/-1}}
 @media(max-width:760px){.service-details{padding-top:24px}.detail-grid{grid-template-columns:1fr;gap:0}.detail-card,.detail-card-featured,.detail-card:last-child{grid-column:auto;padding:18px 2px;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0}.detail-card:last-child{border-bottom:0}.service-extras{display:block;padding:17px 15px;border-radius:10px}.service-extras .text-link{display:inline-block;margin-top:12px;white-space:normal}.service-conditions{padding:14px 2px;border:0;border-top:1px solid var(--line);border-radius:0}}
 
+
+/* Total estimado visible dentro del paso final de cotización */
+.quote-total{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 18px;align-items:center;margin:0 0 20px;padding:20px 22px;background:#f3f9eb;border:1px solid #d9eac6;border-radius:14px}
+.quote-total h3{margin:6px 0 4px;font-size:1.18rem}
+.quote-total p{margin:0;color:var(--muted);font-size:.86rem;line-height:1.5}
+.quote-total>strong{font-size:clamp(1.8rem,4vw,2.4rem);color:#477c24;white-space:nowrap;font-weight:800}
+.quote-total>small{grid-column:1/-1;color:var(--muted);font-size:.76rem}
+@media(max-width:760px){.quote-total{padding:16px 14px;gap:8px 10px}.quote-total>strong{font-size:1.7rem}}
+
 </style></head>
 <body>
 <header class="hero">
@@ -336,7 +345,7 @@ input,select,textarea{font-family:var(--font-body);font-size:.95rem;line-height:
 <div class="choice"><input type="radio" name="aroma" id="aromaFrutos" value="Frutos Secos Cálidos"><label for="aromaFrutos"><b>Frutos Secos Cálidos</b><small>Dulce, acogedor y delicado</small></label></div>
 <div class="choice"><input type="radio" name="aroma" id="aromaPino" value="Pino Natural"><label for="aromaPino"><b>Pino Natural</b><small>Verde, limpio y revitalizante</small></label></div>
 </div></section>
-<section class="card"><div class="step"><span class="num">5</span><h2>¿Dónde y cuándo necesitas el servicio?</h2></div><div class="fields">
+<section class="card"><div class="step"><span class="num">5</span><h2>¿Dónde y cuándo necesitas el servicio?</h2></div><section class="quote-total" aria-live="polite"><div><span class="eyebrow-dark">RESUMEN DE TU SERVICIO</span><h3>Total estimado</h3><p id="estimateDetail">Selecciona el inmueble, el tipo de limpieza y las áreas para calcular tu precio.</p></div><strong id="estimateTotal">L —</strong><small>El total se actualiza automáticamente según tus selecciones y cantidades.</small></section><div class="fields">
 <div class="field"><label for="name">Nombre completo</label><input id="name" required placeholder="Tu nombre"></div><div class="field"><label for="phone">Teléfono / WhatsApp</label><input id="phone" required placeholder="Tu número"></div>
 <div class="field"><label for="address">Dirección del servicio</label><input id="address" required placeholder="Barrio, colonia, referencias"></div><div class="field"><label for="date">Fecha preferida</label><input id="date" type="date" required min="2026-11-11"></div>
 <div class="field"><label for="time">Horario preferido</label><select id="time" required><option value="">Selecciona</option><option>8:00 a. m.</option><option>10:00 a. m.</option><option>1:00 p. m.</option><option>3:00 p. m.</option></select></div><div class="field"><label for="notes">Indicaciones adicionales</label><input id="notes" placeholder="Detalles que debamos conocer"></div></div>
@@ -377,9 +386,19 @@ function calculate(){
  const floorAdjustment=Math.round(areas*Math.max(0,floors-1)*0.10/10)*10;
  return missing?null:areas+floorAdjustment
 }
-form.addEventListener('change',()=>{updateSpacePrices();calculate()});
-form.addEventListener('input',()=>{updateSpacePrices();calculate()});
-updateSpacePrices();
+function updateEstimate(){
+ const total=calculate(),p=selected('property'),t=selected('cleaning'),spaces=chosenSpaces();
+ const totalEl=document.getElementById('estimateTotal'),detail=document.getElementById('estimateDetail');
+ if(!totalEl||!detail)return;
+ if(total===null){totalEl.textContent='L —';detail.textContent='Selecciona el inmueble, el tipo de limpieza y al menos un área para ver tu total.';return}
+ const floors=Math.max(1,Number(document.getElementById('floors').value)||1);
+ const labels=spaces.map(name=>name+' × '+quantityFor(name)).join(', ');
+ totalEl.textContent=money(total);
+ detail.textContent=p+' · Limpieza '+t+' · '+labels+(floors>1?' · '+floors+' plantas':'');
+}
+form.addEventListener('change',()=>{updateSpacePrices();updateEstimate()});
+form.addEventListener('input',()=>{updateSpacePrices();updateEstimate()});
+updateSpacePrices();updateEstimate();
 form.addEventListener('submit',e=>{e.preventDefault();const p=selected('property'),t=selected('cleaning'),spaces=chosenSpaces();if(!p||!t||!spaces.length){alert('Selecciona el inmueble, tipo de limpieza y al menos un espacio.');return}
 const total=calculate(),aroma=selected('aroma')||'Sin preferencia',detalle=spaces.map(x=>x+' x'+quantityFor(x)).join(', '),data='SOLICITUD DE SERVICIO - OSORIOS CLEAN\nCliente: '+document.getElementById('name').value+'\nTeléfono: '+document.getElementById('phone').value+'\nInmueble: '+p+'\nLimpieza: '+t+'\nPlantas del inmueble: '+document.getElementById('floors').value+'\nEspacios y cantidades: '+detalle+'\nAroma preferido (sin costo adicional): '+aroma+'\nFecha solicitada: '+document.getElementById('date').value+'\nHorario: '+document.getElementById('time').value+'\nDirección: '+document.getElementById('address').value+'\nNotas: '+document.getElementById('notes').value+'\nCotización: '+(total===null?'Pendiente de tarifa':'L '+total.toFixed(2))
 window.open('https://wa.me/50496775363?text='+encodeURIComponent(data),'_blank')});
