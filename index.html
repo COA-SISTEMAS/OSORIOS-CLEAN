@@ -140,12 +140,22 @@ footer strong{font-family:var(--h);color:var(--blue);letter-spacing:.06em}
     position:absolute;right:11px;margin:0;padding:0
   }
 }
+
+/* confianza / quienes somos */
+.about{padding:34px 0}
+.about-card{display:grid;grid-template-columns:1.35fr 1fr;gap:24px;align-items:center;padding:24px 28px;border:1px solid #dcebdc;border-radius:18px;background:linear-gradient(115deg,#f4faed,#f0f8fc)}
+.about-card h2{font-size:clamp(1.35rem,3vw,1.8rem);margin:5px 0 8px}
+.about-card p{font-size:.93rem;color:var(--muted);max-width:590px}
+.about-points{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.about-point{font-size:.84rem;font-weight:700;color:#35566b;display:flex;align-items:center;gap:8px}
+.about-point i{font-style:normal;color:var(--lime-d);font-weight:800}
+@media(max-width:700px){.about-card{grid-template-columns:1fr;gap:16px;padding:20px}.about-points{gap:9px}}
 </style>
 </head>
 <body>
 <header><div class="w bar">
 <a class="brand" href="#"><img src="./osorios%20clean.png" alt="Logotipo OSORIOS CLEAN" onerror="this.style.display='none'"><span>OSORIOS CLEAN</span></a>
-<nav><a href="#servicios">Servicios</a><a href="#proceso">Cómo funciona</a><a href="#cotizar">Cotizar</a><a href="#faq">Preguntas</a></nav>
+<nav><a href="#servicios">Servicios</a><a href="#nosotros">Quiénes somos</a><a href="#proceso">Cómo funciona</a><a href="#cotizar">Cotizar</a><a href="#faq">Preguntas</a></nav>
 <a class="btn" href="https://wa.me/50496775363" target="_blank" rel="noopener">WhatsApp</a>
 </div></header>
 
@@ -168,6 +178,14 @@ footer strong{font-family:var(--h);color:var(--blue);letter-spacing:.06em}
 </div>
 <div class="note"><b>Servicios adicionales (se cotizan aparte):</b> sofás, colchones, alfombras, cortinas, interior de refrigeradora u horno, paredes, exteriores extensos y limpieza post-construcción. Tampoco incluyen movimiento de muebles pesados, trabajo en altura, manchas permanentes ni ventanas en zonas no seguras.</div>
 </div></section>
+
+
+<section id="nosotros" class="about"><div class="w">
+<div class="about-card">
+<div><span class="tag">Quiénes somos · Confianza familiar</span><h2>Limpiamos con dedicación, como en casa.</h2>
+<p>Somos una familia que trabaja unida para brindar un servicio de limpieza de calidad, con productos confiables, atención cercana y cuidado en cada espacio. Tu hogar o negocio estará en manos de personas comprometidas con hacer bien su trabajo.</p></div>
+<div class="about-points"><div class="about-point"><i>✓</i> Trato cercano y amable</div><div class="about-point"><i>✓</i> Productos de calidad</div><div class="about-point"><i>✓</i> Cuidado en cada detalle</div><div class="about-point"><i>✓</i> Compromiso familiar</div></div>
+</div></div></section>
 
 <section id="proceso" class="alt"><div class="w">
 <span class="tag">Fácil y rápido</span><h2>Tu limpieza en tres pasos</h2>
