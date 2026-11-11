@@ -245,7 +245,6 @@ footer strong{font-family:var(--h);color:var(--blue);letter-spacing:.06em}
 <fieldset><legend><i>4</i>Aroma final</legend><p class="hint">Sin costo adicional.</p><div class="opts aromas" id="aroma"></div></fieldset>
 <fieldset><legend><i>5</i>Tus datos</legend><div class="fields">
 <div class="f"><label for="name">Nombre completo</label><input id="name" type="text" autocomplete="name" minlength="5" maxlength="70" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñÜü ]+" title="Escribe tu nombre usando solo letras y espacios." placeholder="Nombre y apellidos" required></div>
-<div class="f"><label for="identity">Número de identidad</label><input id="identity" type="text" autocomplete="off" inputmode="numeric" maxlength="15" placeholder="0801-1990-12345" aria-describedby="identityHint" required><small class="hint" id="identityHint">Escribe los 13 dígitos de tu identidad hondureña.</small></div>
 <div class="f"><label for="phone">Teléfono / WhatsApp</label><input id="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="14" placeholder="9999-9999" required></div>
 <div class="f full"><label for="address">Dirección del servicio</label><input id="address" type="text" autocomplete="street-address" placeholder="Barrio, colonia, referencias" required></div>
 <div class="f"><label for="date">Fecha preferida</label><input id="date" type="date" required></div>
@@ -307,23 +306,20 @@ $('f').addEventListener('change',e=>{
  calc();
 });
 const d=new Date(),pad=n=>String(n).padStart(2,'0');$('date').min=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-$('identity').addEventListener('input',e=>{const n=e.target.value.replace(/\D/g,'').slice(0,13);e.target.value=n.replace(/^(\d{4})(\d{0,4})(\d{0,5}).*/,(_,a,b,c)=>[a,b,c].filter(Boolean).join('-'))});
 $('phone').addEventListener('input',e=>{let n=e.target.value.replace(/\D/g,'');if(n.startsWith('504'))n=n.slice(3);n=n.slice(0,8);e.target.value=n.length>4?n.slice(0,4)+'-'+n.slice(4):n});
 
 $('f').addEventListener('submit',e=>{e.preventDefault();
  const c=calc(),err=$('err');err.textContent='';
  if(!c){err.textContent='Selecciona inmueble, tipo de limpieza y al menos un espacio.';$('prop').scrollIntoView({behavior:'smooth',block:'center'});return}
- const f=['name','identity','phone','address','date','time'].find(k=>!$(k).value.trim());
+ const f=['name','phone','address','date','time'].find(k=>!$(k).value.trim());
  if(f){err.textContent='Completa todos los datos obligatorios.';$(f).focus();return}
  const nombre=$('name').value.trim().replace(/\s+/g,' ');
  if(!/^[A-Za-zÁÉÍÓÚáéíóúÑñÜü]+(?:[ '-][A-Za-zÁÉÍÓÚáéíóúÑñÜü]+)+$/.test(nombre)){err.textContent='Escribe tu nombre y apellido usando solamente letras.';$('name').focus();return}
- const identidad=$('identity').value.replace(/\D/g,'');
- if(identidad.length!==13){err.textContent='El número de identidad debe contener exactamente 13 dígitos.';$('identity').focus();return}
  const telefono=$('phone').value.replace(/\D/g,'').replace(/^504/,'');
  if(telefono.length!==8||!/^[2389]/.test(telefono)){err.textContent='Ingresa un teléfono hondureño válido de 8 dígitos.';$('phone').focus();return}
  if($('address').value.trim().length<8){err.textContent='Escribe una dirección más completa, con barrio, colonia o referencias.';$('address').focus();return}
  if($('date').value<new Date().toISOString().slice(0,10)){err.textContent='Selecciona una fecha de hoy o posterior.';$('date').focus();return}
- const msg=['Hola, soy '+nombre+'.','Les comparto mi solicitud de servicio para consultar su disponibilidad y confirmar si pueden atenderme en la fecha indicada. ¡Muchas gracias!','','*COTIZACIÓN - OSORIOS CLEAN*','Cliente: '+nombre,'Identidad: '+identidad,'Teléfono: '+$('phone').value.trim(),'Inmueble: '+c.p,'Limpieza: '+c.t,'Plantas: '+c.fl,'Espacios: '+c.lines.map(x=>x.a+' x'+x.q).join(', '),'Aroma (sin costo): '+(sel('aroma')||'Sin preferencia'),'Fecha solicitada: '+$('date').value,'Horario preferido: '+$('time').value,'Dirección: '+$('address').value.trim(),'Notas: '+($('notes').value.trim()||'—'),'*Total estimado: '+L(c.tot)+'*'].join('\n');
+ const msg=['Hola, soy '+nombre+'.','Les comparto mi solicitud de servicio para consultar su disponibilidad y confirmar si pueden atenderme en la fecha indicada. ¡Muchas gracias!','','*COTIZACIÓN - OSORIOS CLEAN*','Cliente: '+nombre,'Teléfono: '+$('phone').value.trim(),'Inmueble: '+c.p,'Limpieza: '+c.t,'Plantas: '+c.fl,'Espacios: '+c.lines.map(x=>x.a+' x'+x.q).join(', '),'Aroma (sin costo): '+(sel('aroma')||'Sin preferencia'),'Fecha solicitada: '+$('date').value,'Horario preferido: '+$('time').value,'Dirección: '+$('address').value.trim(),'Notas: '+($('notes').value.trim()||'—'),'*Total estimado: '+L(c.tot)+'*'].join('\n');
  window.open('https://wa.me/50496775363?text='+encodeURIComponent(msg),'_blank','noopener');
 });
 $('pp').textContent=Math.round(AJUSTES.recargoPorPlanta*100);
