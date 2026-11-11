@@ -273,6 +273,62 @@ input,select,textarea{font-family:var(--font-body);font-size:.95rem;line-height:
 .quote-total>small{grid-column:1/-1;color:var(--muted);font-size:.76rem}
 @media(max-width:760px){.quote-total{padding:16px 14px;gap:8px 10px}.quote-total>strong{font-size:1.7rem}}
 
+/* Pulido visual: menos elementos decorativos y una experiencia móvil más ligera */
+.visual-orbit,.cta-band:after{display:none!important}
+@media(max-width:760px){
+  body{background:#fff}
+  .hero{padding-bottom:52px}
+  .hero-orb{display:none}
+  .wrap{margin-top:-18px;padding:0 15px}
+  .intro-strip{margin:14px 0 26px;padding:14px 2px;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none}
+  .content-section{padding:20px 0 34px}
+  .section-heading{margin-bottom:18px}
+  .section-heading>p{margin-top:8px}
+  .service-grid{grid-template-columns:1fr;gap:0}
+  .service-card,.service-card:hover{display:grid;grid-template-columns:1fr;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;transform:none}
+  .service-card:last-child{grid-column:auto;border-bottom:0}
+  .service-art{display:none}
+  .service-copy{padding:15px 2px}
+  .service-copy p{min-height:0;margin-bottom:9px}
+  .about-section{padding:28px 0 38px;gap:18px}
+  .about-visual{min-height:0;background:transparent;border-radius:0;overflow:visible}
+  .visual-panel{width:100%;min-height:0;padding:22px 20px;border-radius:13px;box-shadow:none}
+  .visual-big{font-size:2rem;margin-top:4px}
+  .visual-caption{margin-top:10px}
+  .floating-chip{position:static;display:inline-block;margin:10px 0 0;padding:8px 0;background:transparent;box-shadow:none}
+  .process-section{padding:25px 0;margin:0 0 30px;background:transparent;border-top:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0}
+  .process-grid{gap:0}
+  .process-item{display:grid;grid-template-columns:36px 1fr;column-gap:12px;align-items:start;padding:15px 2px;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0}
+  .process-item:last-child{border-bottom:0}
+  .process-number{position:static;grid-row:1 / span 2;grid-column:1;width:30px;height:30px;display:grid;place-items:center;background:#eff8e8;border-radius:50%}
+  .process-item h3,.process-item p{grid-column:2}
+  .process-item h3{margin:0 0 4px}
+  .cta-band{padding:23px 20px;border-radius:13px;margin-bottom:28px;box-shadow:none}
+  .quote-section{padding-top:28px}
+  .quote-section form .card,.card{padding:15px 0;margin:0 0 12px;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;background:transparent}
+  .card:focus-within{border-color:var(--line);box-shadow:none}
+  .step{margin-bottom:12px}
+  .num{width:29px;height:29px;flex:0 0 29px;border-radius:50%}
+  .choices{gap:8px}
+  .choice label{min-height:66px;padding:11px;border-radius:10px;box-shadow:none}
+  .spaces{gap:7px}
+  .space-item{gap:5px}
+  .space{min-height:42px;padding:8px 7px;border-radius:9px;background:#fff}
+  .space-qty{height:40px;min-height:40px;padding:5px 3px;border-radius:8px}
+  .summary{padding:15px;border-radius:11px;box-shadow:none}
+  .notice{padding:11px;border-radius:9px}
+  .footer{padding:20px 12px 26px}
+}
+@media(max-width:390px){
+  .wrap{padding:0 12px}
+  .site-nav{gap:5px}
+  .site-nav a{padding:8px 2px;font-size:.65rem}
+  .spaces{grid-template-columns:1fr}
+  .space-item{grid-template-columns:minmax(0,1fr) 58px}
+  .space-qty{width:58px}
+  .choices{grid-template-columns:1fr 1fr}
+  .choice label{min-height:62px}
+}
 </style></head>
 <body>
 <header class="hero">
@@ -403,60 +459,3 @@ form.addEventListener('submit',e=>{e.preventDefault();const p=selected('property
 const total=calculate(),aroma=selected('aroma')||'Sin preferencia',detalle=spaces.map(x=>x+' x'+quantityFor(x)).join(', '),data='SOLICITUD DE SERVICIO - OSORIOS CLEAN\nCliente: '+document.getElementById('name').value+'\nTeléfono: '+document.getElementById('phone').value+'\nInmueble: '+p+'\nLimpieza: '+t+'\nPlantas del inmueble: '+document.getElementById('floors').value+'\nEspacios y cantidades: '+detalle+'\nAroma preferido (sin costo adicional): '+aroma+'\nFecha solicitada: '+document.getElementById('date').value+'\nHorario: '+document.getElementById('time').value+'\nDirección: '+document.getElementById('address').value+'\nNotas: '+document.getElementById('notes').value+'\nCotización: '+(total===null?'Pendiente de tarifa':'L '+total.toFixed(2))
 window.open('https://wa.me/50496775363?text='+encodeURIComponent(data),'_blank')});
 </script></body></html>
-
-/* Pulido visual: menos elementos decorativos y una experiencia móvil más ligera */
-.visual-orbit,.cta-band:after{display:none!important}
-@media(max-width:760px){
-  body{background:#fff}
-  .hero{padding-bottom:52px}
-  .hero-orb{display:none}
-  .wrap{margin-top:-18px;padding:0 15px}
-  .intro-strip{margin:14px 0 26px;padding:14px 2px;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none}
-  .content-section{padding:20px 0 34px}
-  .section-heading{margin-bottom:18px}
-  .section-heading>p{margin-top:8px}
-  .service-grid{grid-template-columns:1fr;gap:0}
-  .service-card,.service-card:hover{display:grid;grid-template-columns:1fr;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;transform:none}
-  .service-card:last-child{grid-column:auto;border-bottom:0}
-  .service-art{display:none}
-  .service-copy{padding:15px 2px}
-  .service-copy p{min-height:0;margin-bottom:9px}
-  .about-section{padding:28px 0 38px;gap:18px}
-  .about-visual{min-height:0;background:transparent;border-radius:0;overflow:visible}
-  .visual-panel{width:100%;min-height:0;padding:22px 20px;border-radius:13px;box-shadow:none}
-  .visual-big{font-size:2rem;margin-top:4px}
-  .visual-caption{margin-top:10px}
-  .floating-chip{position:static;display:inline-block;margin:10px 0 0;padding:8px 0;background:transparent;box-shadow:none}
-  .process-section{padding:25px 0;margin:0 0 30px;background:transparent;border-top:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0}
-  .process-grid{gap:0}
-  .process-item{display:grid;grid-template-columns:36px 1fr;column-gap:12px;align-items:start;padding:15px 2px;background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0}
-  .process-item:last-child{border-bottom:0}
-  .process-number{position:static;grid-row:1 / span 2;grid-column:1;width:30px;height:30px;display:grid;place-items:center;background:#eff8e8;border-radius:50%}
-  .process-item h3,.process-item p{grid-column:2}
-  .process-item h3{margin:0 0 4px}
-  .cta-band{padding:23px 20px;border-radius:13px;margin-bottom:28px;box-shadow:none}
-  .quote-section{padding-top:28px}
-  .quote-section form .card,.card{padding:15px 0;margin:0 0 12px;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;background:transparent}
-  .card:focus-within{border-color:var(--line);box-shadow:none}
-  .step{margin-bottom:12px}
-  .num{width:29px;height:29px;flex:0 0 29px;border-radius:50%}
-  .choices{gap:8px}
-  .choice label{min-height:66px;padding:11px;border-radius:10px;box-shadow:none}
-  .spaces{gap:7px}
-  .space-item{gap:5px}
-  .space{min-height:42px;padding:8px 7px;border-radius:9px;background:#fff}
-  .space-qty{height:40px;min-height:40px;padding:5px 3px;border-radius:8px}
-  .summary{padding:15px;border-radius:11px;box-shadow:none}
-  .notice{padding:11px;border-radius:9px}
-  .footer{padding:20px 12px 26px}
-}
-@media(max-width:390px){
-  .wrap{padding:0 12px}
-  .site-nav{gap:5px}
-  .site-nav a{padding:8px 2px;font-size:.65rem}
-  .spaces{grid-template-columns:1fr}
-  .space-item{grid-template-columns:minmax(0,1fr) 58px}
-  .space-qty{width:58px}
-  .choices{grid-template-columns:1fr 1fr}
-  .choice label{min-height:62px}
-}
