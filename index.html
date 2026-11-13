@@ -73,10 +73,28 @@ nav{display:flex;gap:24px;font-size:.9rem;font-weight:500}nav a{text-decoration:
 .hero-bubbles img{position:absolute;display:block;width:clamp(105px,12vw,165px);height:auto;object-fit:contain;opacity:.82;filter:drop-shadow(0 5px 12px rgba(0,40,70,.10))}
 .hero-bubbles .left{left:18px;top:50%;transform:translateY(-50%) rotate(-8deg)}
 .hero-bubbles .right{right:18px;top:50%;transform:translateY(-50%) scaleX(-1) rotate(-7deg)}
+.hero-bubbles .bubble-sm{width:clamp(25px,3vw,42px);opacity:.72}
+.hero-bubbles .bubble-xs{width:clamp(15px,1.8vw,25px);opacity:.68}
+.hero-bubbles .bubble-md{width:clamp(55px,6vw,82px);opacity:.76}
+.hero-bubbles .b3{left:13%;top:18%;transform:rotate(12deg)}
+.hero-bubbles .b4{left:8%;bottom:12%;transform:rotate(-18deg)}
+.hero-bubbles .b5{right:13%;top:13%;transform:scaleX(-1) rotate(15deg)}
+.hero-bubbles .b6{right:8%;bottom:10%;transform:rotate(18deg)}
+.hero-bubbles .b7{right:25%;top:66%;transform:scaleX(-1) rotate(-10deg)}
+.hero-bubbles .b8{left:24%;bottom:15%;transform:rotate(9deg)}
 @media(max-width:900px){
  .hero-bubbles img{width:clamp(90px,14vw,130px);opacity:.62}
  .hero-bubbles .left{left:-24px}
  .hero-bubbles .right{right:-24px}
+ .hero-bubbles .bubble-sm{width:clamp(24px,4vw,34px)}
+ .hero-bubbles .bubble-xs{width:18px}
+ .hero-bubbles .bubble-md{width:clamp(42px,7vw,60px)}
+ .hero-bubbles .b3{left:17%;top:12%}
+ .hero-bubbles .b4{left:11%;bottom:8%}
+ .hero-bubbles .b5{right:15%;top:10%}
+ .hero-bubbles .b6{right:9%;bottom:8%}
+ .hero-bubbles .b7{right:28%;top:70%}
+ .hero-bubbles .b8{left:30%;bottom:9%}
 }
 @media(max-width:560px){
  .hero{padding:48px 0 56px}
@@ -85,6 +103,15 @@ nav{display:flex;gap:24px;font-size:.9rem;font-weight:500}nav a{text-decoration:
  .hero-bubbles img{width:clamp(90px,27vw,125px);opacity:.32}
  .hero-bubbles .left{left:-42px;top:10%;transform:rotate(-10deg)}
  .hero-bubbles .right{right:-42px;top:auto;bottom:2%;transform:scaleX(-1) rotate(-7deg)}
+ .hero-bubbles .bubble-sm{width:25px;opacity:.38}
+ .hero-bubbles .bubble-xs{width:15px;opacity:.34}
+ .hero-bubbles .bubble-md{width:42px;opacity:.38}
+ .hero-bubbles .b3{left:24%;top:5%}
+ .hero-bubbles .b4{left:8%;bottom:4%}
+ .hero-bubbles .b5{right:23%;top:7%}
+ .hero-bubbles .b6{right:8%;bottom:4%}
+ .hero-bubbles .b7{right:30%;top:72%}
+ .hero-bubbles .b8{left:36%;bottom:6%}
  .hero>.w{z-index:2}
  .trust{gap:8px 16px}
 }
@@ -221,6 +248,12 @@ footer strong{font-family:var(--h);color:var(--blue);letter-spacing:.06em}
 <div class="hero-bubbles" aria-hidden="true">
 <img class="left" src="./pngwing.com.png" alt="" loading="eager">
 <img class="right" src="./pngwing.com.png" alt="" loading="eager">
+<img class="bubble-sm b3" src="./pngwing.com.png" alt="" loading="eager">
+<img class="bubble-md b4" src="./pngwing.com.png" alt="" loading="eager">
+<img class="bubble-sm b5" src="./pngwing.com.png" alt="" loading="eager">
+<img class="bubble-xs b6" src="./pngwing.com.png" alt="" loading="eager">
+<img class="bubble-md b7" src="./pngwing.com.png" alt="" loading="eager">
+<img class="bubble-xs b8" src="./pngwing.com.png" alt="" loading="eager">
 </div>
 <div class="w">
 <span class="tag">Limpieza profesional · Juticalpa, Olancho</span>
