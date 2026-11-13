@@ -171,6 +171,12 @@ footer strong{font-family:var(--h);color:var(--blue);letter-spacing:.06em}
 .about-card h2{font-size:clamp(1.35rem,3vw,1.8rem);margin:5px 0 8px}
 .about-card p{font-size:.93rem;color:var(--muted);max-width:590px}
 .about-points{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mission-vision{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0 18px}
+.mv-item{padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.mv-item h3{font:800 .98rem var(--h);color:var(--blue-d);margin:0 0 5px}
+.mv-item p{font-size:.87rem;line-height:1.5;color:var(--muted)}
+@media(max-width:560px){.mission-vision{grid-template-columns:1fr;gap:10px}.mv-item{padding:14px 16px}}
+
 .about-point{font-size:.84rem;font-weight:700;color:#35566b;display:flex;align-items:center;gap:8px}
 .about-point i{font-style:normal;color:var(--lime-d);font-weight:800}
 @media(max-width:700px){.about-card{grid-template-columns:1fr;gap:16px;padding:20px}.about-points{gap:9px}}
@@ -216,6 +222,10 @@ footer strong{font-family:var(--h);color:var(--blue);letter-spacing:.06em}
 <div><span class="tag">Quiénes somos · Confianza familiar</span><h2>Limpiamos con dedicación, como en casa.</h2>
 <p>Somos una familia que trabaja unida para brindar un servicio de limpieza de calidad, con productos confiables, atención cercana y cuidado en cada espacio. Conoce a las personas que estarán detrás de tu servicio.</p></div>
 <div class="about-points"><div class="about-point"><i>✓</i> Trato cercano y amable</div><div class="about-point"><i>✓</i> Productos de calidad</div><div class="about-point"><i>✓</i> Cuidado en cada detalle</div><div class="about-point"><i>✓</i> Compromiso familiar</div></div>
+</div>
+<div class="mission-vision" aria-label="Misión y visión de OSORIOS CLEAN">
+<article class="mv-item"><h3>Nuestra misión</h3><p>Brindar limpieza profesional con calidad, responsabilidad y atención cercana, cuidando cada espacio y el bienestar de nuestros clientes.</p></article>
+<article class="mv-item"><h3>Nuestra visión</h3><p>Ser una empresa referente en limpieza en Honduras, reconocida por su confianza, excelencia y crecimiento sostenible.</p></article>
 </div>
 <div class="team-grid">
 <article class="team-card"><img src="./cristhian.png" alt="Cristhian Osorio, supervisor de OSORIOS CLEAN" loading="lazy"><div><h3>Cristhian Osorio</h3><p>Supervisor</p></div></article>
