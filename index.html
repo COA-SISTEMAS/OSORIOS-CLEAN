@@ -62,32 +62,18 @@ nav{display:flex;gap:24px;font-size:.9rem;font-weight:500}nav a{text-decoration:
 /* hero */
 .hero{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(118deg,#1a7fb9,#2999cb 58%,#6fc23e);color:#fff;padding:72px 0 80px}
 .hero>.w{position:relative;z-index:2}
-.soap-bubbles{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
-.soap-bubble{position:absolute;display:block;width:clamp(42px,7vw,104px);aspect-ratio:1;border:1.5px solid rgba(255,255,255,.72);border-radius:50%;opacity:.82;background:
- radial-gradient(ellipse at 27% 23%,rgba(255,255,255,.95) 0 2%,rgba(255,255,255,.35) 7%,transparent 22%),
- radial-gradient(ellipse at 72% 78%,rgba(255,255,255,.22),transparent 32%),
- conic-gradient(from 35deg,rgba(255,255,255,.12),rgba(115,239,255,.46),rgba(255,157,231,.38),rgba(255,255,255,.08),rgba(180,255,222,.38),rgba(255,255,255,.12));
- box-shadow:inset 0 0 13px rgba(255,255,255,.48),inset -7px -8px 16px rgba(112,232,255,.14),0 0 16px rgba(255,255,255,.18);
+.hero-bubbles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.hero-bubbles img{position:absolute;display:block;width:clamp(190px,23vw,330px);height:auto;object-fit:contain;opacity:.9;filter:drop-shadow(0 8px 16px rgba(0,40,70,.12))}
+.hero-bubbles .left{left:-26px;top:50%;transform:translateY(-50%) rotate(-9deg)}
+.hero-bubbles .right{right:-24px;top:50%;transform:translateY(-50%) scaleX(-1) rotate(-7deg)}
+@media(max-width:900px){.hero-bubbles img{width:clamp(150px,25vw,230px);opacity:.72}.hero-bubbles .left{left:-38px}.hero-bubbles .right{right:-42px}}
+@media(max-width:560px){
+ .hero{padding:48px 0 56px}
+ .hero-bubbles img{width:clamp(135px,42vw,190px);opacity:.42}
+ .hero-bubbles .left{left:-72px;top:12%;transform:rotate(-12deg)}
+ .hero-bubbles .right{right:-60px;top:auto;bottom:0;transform:scaleX(-1) rotate(-7deg)}
+ .hero>.w{z-index:2}
 }
-.soap-bubble:before{content:"";position:absolute;left:17%;top:12%;width:35%;height:13%;border-radius:50%;transform:rotate(-35deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.95),transparent);filter:blur(1px)}
-.soap-bubble:after{content:"";position:absolute;right:15%;bottom:16%;width:20%;height:8%;border-radius:50%;transform:rotate(-35deg);background:rgba(255,255,255,.72);filter:blur(2px)}
-.soap-bubble.b1{left:3.5%;top:16%;width:clamp(58px,6.2vw,94px)}
-.soap-bubble.b2{left:2%;bottom:10%;width:clamp(100px,10vw,158px)}
-.soap-bubble.b3{left:9%;top:48%;width:clamp(22px,2.1vw,34px);opacity:.7}
-.soap-bubble.b4{right:4%;top:12%;width:clamp(76px,8vw,122px)}
-.soap-bubble.b5{right:2.5%;top:47%;width:clamp(120px,12vw,184px)}
-.soap-bubble.b6{right:18%;bottom:12%;width:clamp(76px,8vw,122px)}
-.soap-bubble.b7{right:15%;top:25%;width:clamp(28px,3vw,44px);opacity:.72}
-.soap-bubble.b8{right:8%;bottom:9%;width:clamp(22px,2.4vw,36px);opacity:.7}
-@media(max-width:700px){.soap-bubble.b2,.soap-bubble.b5,.soap-bubble.b6{opacity:.48}.soap-bubble.b1{left:2%;top:7%}.soap-bubble.b4{right:2%;top:5%}.soap-bubble.b5{right:1%;top:58%}.soap-bubble.b6{right:5%;bottom:4%}}
-@media(max-width:560px){.soap-bubble.b3,.soap-bubble.b7,.soap-bubble.b8{display:none}.soap-bubble.b2{left:-28px;bottom:5%}.soap-bubble.b5{right:-48px;top:60%}.soap-bubble.b6{right:12%;bottom:2%}}
-.hero h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.05;letter-spacing:-.045em;max-width:720px;margin:14px 0 16px}
-.hero h1 em{font-style:normal;color:#e4ffb7}
-.hero p{max-width:540px;font-size:1.08rem;color:#f0faff}
-.hero .tag{color:#e4ffb7}
-.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.trust{display:flex;gap:10px 24px;flex-wrap:wrap;margin-top:32px;font-size:.88rem;font-weight:500}
-.trust span:before{content:"✓";margin-right:8px;color:#e4ffb7;font-weight:800}
 /* services */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
 .card{border:1px solid var(--line);border-radius:var(--r);padding:24px;background:#fff}
@@ -218,11 +204,9 @@ footer strong{font-family:var(--h);color:var(--blue);letter-spacing:.06em}
 
 <main>
 <div class="hero">
-<div class="soap-bubbles" aria-hidden="true">
-<span class="soap-bubble b1"></span><span class="soap-bubble b2"></span>
-<span class="soap-bubble b3"></span><span class="soap-bubble b4"></span>
-<span class="soap-bubble b5"></span><span class="soap-bubble b6"></span>
-<span class="soap-bubble b7"></span><span class="soap-bubble b8"></span>
+<div class="hero-bubbles" aria-hidden="true">
+<img class="left" src="./pngwing.com.png" alt="" loading="eager">
+<img class="right" src="./pngwing.com.png" alt="" loading="eager">
 </div>
 <div class="w">
 <span class="tag">Limpieza profesional · Juticalpa, Olancho</span>
