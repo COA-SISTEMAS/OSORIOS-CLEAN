@@ -70,48 +70,47 @@ nav{display:flex;gap:24px;font-size:.9rem;font-weight:500}nav a{text-decoration:
 .trust{display:flex;gap:10px 24px;flex-wrap:wrap;margin-top:32px;font-size:.88rem;font-weight:500}
 .trust span:before{content:"✓";margin-right:8px;color:#e4ffb7;font-weight:800}
 .hero-bubbles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-.hero-bubbles img{position:absolute;display:block;width:clamp(105px,12vw,165px);height:auto;object-fit:contain;opacity:.82;filter:drop-shadow(0 5px 12px rgba(0,40,70,.10))}
-.hero-bubbles .left{left:18px;top:50%;transform:translateY(-50%) rotate(-8deg)}
-.hero-bubbles .right{right:18px;top:50%;transform:translateY(-50%) scaleX(-1) rotate(-7deg)}
-.hero-bubbles .bubble-sm{width:clamp(25px,3vw,42px);opacity:.72}
-.hero-bubbles .bubble-xs{width:clamp(15px,1.8vw,25px);opacity:.68}
-.hero-bubbles .bubble-md{width:clamp(55px,6vw,82px);opacity:.76}
-.hero-bubbles .b3{left:13%;top:18%;transform:rotate(12deg)}
-.hero-bubbles .b4{left:8%;bottom:12%;transform:rotate(-18deg)}
-.hero-bubbles .b5{right:13%;top:13%;transform:scaleX(-1) rotate(15deg)}
-.hero-bubbles .b6{right:8%;bottom:10%;transform:rotate(18deg)}
-.hero-bubbles .b7{right:25%;top:66%;transform:scaleX(-1) rotate(-10deg)}
-.hero-bubbles .b8{left:24%;bottom:15%;transform:rotate(9deg)}
+.hero-bubbles img{position:absolute;display:block;height:auto;object-fit:contain;opacity:.82;filter:drop-shadow(0 5px 12px rgba(0,40,70,.10))}
+.hero-bubbles .left{width:clamp(130px,14vw,190px);left:-28px;top:50%;transform:translateY(-50%) rotate(-8deg)}
+.hero-bubbles .right{width:clamp(130px,14vw,190px);right:-28px;top:50%;transform:translateY(-50%) scaleX(-1) rotate(-7deg)}
+.hero-bubbles .bubble-sm{width:clamp(40px,4vw,58px);opacity:.76}
+.hero-bubbles .bubble-xs{width:clamp(30px,3vw,42px);opacity:.72}
+.hero-bubbles .bubble-md{width:clamp(75px,8vw,110px);opacity:.78}
+.hero-bubbles .b3{left:8%;top:14%;transform:rotate(12deg)}
+.hero-bubbles .b4{left:3%;bottom:8%;transform:rotate(-18deg)}
+.hero-bubbles .b5{right:8%;top:13%;transform:scaleX(-1) rotate(15deg)}
+.hero-bubbles .b6{right:3%;bottom:9%;transform:rotate(18deg)}
+.hero-bubbles .b7{right:12%;bottom:34%;transform:scaleX(-1) rotate(-10deg)}
+.hero-bubbles .b8{left:12%;bottom:32%;transform:rotate(9deg)}
 @media(max-width:900px){
- .hero-bubbles img{width:clamp(90px,14vw,130px);opacity:.62}
- .hero-bubbles .left{left:-24px}
- .hero-bubbles .right{right:-24px}
- .hero-bubbles .bubble-sm{width:clamp(24px,4vw,34px)}
- .hero-bubbles .bubble-xs{width:18px}
- .hero-bubbles .bubble-md{width:clamp(42px,7vw,60px)}
- .hero-bubbles .b3{left:17%;top:12%}
- .hero-bubbles .b4{left:11%;bottom:8%}
- .hero-bubbles .b5{right:15%;top:10%}
- .hero-bubbles .b6{right:9%;bottom:8%}
- .hero-bubbles .b7{right:28%;top:70%}
- .hero-bubbles .b8{left:30%;bottom:9%}
+ .hero-bubbles .left,.hero-bubbles .right{width:clamp(112px,17vw,150px)}
+ .hero-bubbles .left{left:-48px}
+ .hero-bubbles .right{right:-48px}
+ .hero-bubbles .bubble-sm{width:clamp(34px,5vw,46px)}
+ .hero-bubbles .bubble-xs{width:28px}
+ .hero-bubbles .bubble-md{width:clamp(62px,8vw,82px)}
+ .hero-bubbles .b3{left:5%;top:10%}
+ .hero-bubbles .b4{left:1%;bottom:6%}
+ .hero-bubbles .b5{right:5%;top:10%}
+ .hero-bubbles .b6{right:1%;bottom:6%}
+ .hero-bubbles .b7{right:8%;bottom:28%}
+ .hero-bubbles .b8{left:8%;bottom:28%}
 }
 @media(max-width:560px){
  .hero{padding:48px 0 56px}
  .hero h1{font-size:clamp(2.15rem,10vw,2.8rem);max-width:100%}
  .hero p{font-size:1rem;max-width:100%}
- .hero-bubbles img{width:clamp(90px,27vw,125px);opacity:.32}
- .hero-bubbles .left{left:-42px;top:10%;transform:rotate(-10deg)}
- .hero-bubbles .right{right:-42px;top:auto;bottom:2%;transform:scaleX(-1) rotate(-7deg)}
- .hero-bubbles .bubble-sm{width:25px;opacity:.38}
- .hero-bubbles .bubble-xs{width:15px;opacity:.34}
- .hero-bubbles .bubble-md{width:42px;opacity:.38}
- .hero-bubbles .b3{left:24%;top:5%}
- .hero-bubbles .b4{left:8%;bottom:4%}
- .hero-bubbles .b5{right:23%;top:7%}
- .hero-bubbles .b6{right:8%;bottom:4%}
- .hero-bubbles .b7{right:30%;top:72%}
- .hero-bubbles .b8{left:36%;bottom:6%}
+ .hero-bubbles .left{width:clamp(100px,31vw,130px);left:-58px;top:2%;transform:rotate(-10deg);opacity:.48}
+ .hero-bubbles .right{width:clamp(100px,31vw,130px);right:-58px;top:auto;bottom:1%;transform:scaleX(-1) rotate(-7deg);opacity:.48}
+ .hero-bubbles .bubble-sm{width:32px;opacity:.42}
+ .hero-bubbles .bubble-xs{width:24px;opacity:.38}
+ .hero-bubbles .bubble-md{width:58px;opacity:.42}
+ .hero-bubbles .b3{left:2%;top:27%}
+ .hero-bubbles .b4{left:-18px;bottom:4%}
+ .hero-bubbles .b5{right:2%;top:5%}
+ .hero-bubbles .b6{right:-12px;bottom:28%}
+ .hero-bubbles .b7{right:2%;bottom:5%}
+ .hero-bubbles .b8{left:3%;bottom:27%}
  .hero>.w{z-index:2}
  .trust{gap:8px 16px}
 }
